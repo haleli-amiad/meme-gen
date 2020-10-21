@@ -1,20 +1,40 @@
 'use strict';
 
-
-var gCanvas;
-var gCtx;
-var gCurrShape = 'triangle'
-
-function init() {
-    gCanvas = document.querySelector('#my-canvas');
-    gCtx = gCanvas.getContext('2d');
+function onInit() {
+    init()
 }
-drawImg2()
 
-function drawImg2() {
-    var img = new Image()
-    img.src = '..img/meme-img/arthur.jpg';
-    img.onload = () => {
-        gCtx.drawImage(img, 0, 0, gCanvas.width, gCanvas.height)
-    }
+function onSetImg(src, id) {
+    drawImg(src, id)
+}
+
+function onRenderTextInput(txt) {
+    let input = document.querySelector('input')
+    input.value = txt
+}
+
+function onGetText(txt) {
+    txt.preventDefault();
+    txt = document.querySelector('[name=text]').value.toUpperCase();
+    renderCanvas(txt)
+    // updateLines(txt)
+    drawText(txt, 100, 57)
+}
+
+function updateSettings(txt) {
+    const line = getLine();
+    line.txt = txt
+    gCtx.strokeStyle = line.color;
+    gCtx.font = `${line.size}px ${gFont}`
+    gCtx.textAlign = line.align;
+}
+
+function draw(ev) {
+    console.log(ev);
+}
+
+function setFontSize(diff) {
+    const line = getLine()
+    line.font += diff
+    renderCanvas()
 }

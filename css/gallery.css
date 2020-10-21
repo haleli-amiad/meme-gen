@@ -1,12 +1,93 @@
 canvas {
-    display: block;
-    margin: 30px auto;
+    /* display: block; */
+    /* display: block; */
+    /* position: relative; */
     border: 2px solid rgba(0, 0, 0, 0.646);
     box-shadow: 0px 0px 5px 0px rgba(130, 130, 130, 0.45);
+    /* grid-column: 3 / span 5;
+    grid-row: 1 / span 5; */
 }
 
 .canvas-container {
+    /* position: absolute; */
+    text-align: center;
+    width: 80vw;
+    height: 400px;
+}
+
+.meme-area {
+    height: 400px;
+    /* margin: 0 auto; */
+    /* display: flex; */
+    /* justify-content: center; */
+    /* align-items: center; */
+}
+
+main {
+    display: unset;
+}
+
+form {
+    margin: 0 auto;
+    grid-column: 1;
+    grid-row: 1 / span 3;
+}
+
+img {
+    /* width: unset;
+    height: unset; */
+    object-fit: cover;
+}
+
+.gallery-img {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+}
+
+.gallery {
     position: relative;
-    width: 100vw;
-    height: 500px;
+    /* margin: 60px auto; */
+    margin-top: 100px;
+    padding-top: 100px;
+    display: unset;
+}
+
+section .preferences {
+    /* display: inline; */
+    /* position: relative; */
+    max-width: 700px;
+    height: 300px;
+    display: grid;
+    grid-template-columns: repeat(20, 1fr);
+    grid-template-rows: repeat(20, 1fr);
+    /* position: relative; */
+    /* left: 30; */
+}
+
+button {
+    background-color: unset;
+}
+
+.arrows-button {
+    background-color: none;
+    color: none;
+    border: none;
+    width: 40px;
+    height: 40px;
+    outline: none;
+}
+
+.arrow-button-up {
+    grid-column: 4;
+    grid-row: 1;
+    width: 40px;
+    height: 40px;
+}
+
+.arrow-button-down {
+    grid-column: 4;
+    grid-row: 1;
+    width: 40px;
+    height: 40px;
 }
