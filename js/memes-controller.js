@@ -2,6 +2,7 @@
 
 function onInit() {
     init()
+    renderGallery()
 }
 
 function onSetImg(src, id) {
@@ -13,28 +14,21 @@ function onRenderTextInput(txt) {
     input.value = txt
 }
 
-function onGetText(txt) {
-    txt.preventDefault();
-    txt = document.querySelector('[name=text]').value.toUpperCase();
-    renderCanvas(txt)
-    // updateLines(txt)
-    drawText(txt, 100, 57)
+function onGetText(ev) {
+    let line = getLine()
+    // txt.preventDefault();
+    var txt = document.querySelector('[name=text]').value.toUpperCase();
+    onRenderTextInput(txt)
+    renderCanvas()
+    drawText(txt, line.x, line.y)
 }
 
-function updateSettings(txt) {
-    const line = getLine();
-    line.txt = txt
-    gCtx.strokeStyle = line.color;
-    gCtx.font = `${line.size}px ${gFont}`
-    gCtx.textAlign = line.align;
-}
 
 function draw(ev) {
     console.log(ev);
 }
 
 function setFontSize(diff) {
-    const line = getLine()
-    line.font += diff
+    updateFontSize(diff)
     renderCanvas()
 }
