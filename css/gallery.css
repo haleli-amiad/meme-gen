@@ -1,0 +1,12 @@
+canvas {
+    display: block;
+    margin: 30px auto;
+    border: 2px solid rgba(0, 0, 0, 0.646);
+    box-shadow: 0px 0px 5px 0px rgba(130, 130, 130, 0.45);
+}
+
+.canvas-container {
+    position: relative;
+    width: 100vw;
+    height: 500px;
+}
