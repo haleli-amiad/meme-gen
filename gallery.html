@@ -18,25 +18,26 @@
                 </ul>
                 </section>
        </header>
-
      <main class="canvas-container container">
-         <section class="meme-area">
-            <canvas id="my-canvas" height="300" width="500" onclick="draw(event)"></canvas>
+            <canvas id="my-canvas" height="320" width="600" onclick="draw(event)"></canvas>
             <section class="preferences">
                <label for="text"></label>
-               <input type="text" name="text" placeholder="Write your text" class="text"/>
-               <button type="submit" onclick="onGetText(event)">Add</button>
-          <button class="arrows-button arrow-button-up" onclick="setFontSize(1)"><img src="img/site-img/arrow-up.png" class="arrow" alt=""></button>  
-          <button class="arrows-button arrow-button-down" onclick="setFontSize(-1)"><img src="img/site-img/arrow-down.png" class="arrow" alt=""></button>  
-            </section>
-           </section>
-          </section>
-            <section class="gallery container">
+               <input type="text" name="text" placeholder="Write your text"  oninput="onGetText(this.value)" class="text"/>
+               <!-- <button type="submit" onclick="onGetText()">Add</button>s -->
+               <button class="arrows-button text-add-btn" onclick="onAddLine()"><img src="img/site-img/add-line.png" class="arrow" alt=""></button>  
+             <button class="arrows-button text-plus-btn" onclick="onSetFontSize(1)"><img src="img/site-img/text-plus.png" class="arrow" alt=""></button>  
+               <button class="arrows-button text-minus-btn" onclick="onSetFontSize(-1)"><img src="img/site-img/text-minus.png" class="arrow" alt=""></button>  
+                <button class="arrows-button text-up-btn" onclick="onChangeTextPos(-3)"><img src="img/site-img/arrow-up.png" class="arrow" alt=""></button>  
+                  <button class="arrows-button text-down-btn" onclick="onChangeTextPos(3)"><img src="img/site-img/arrow-down.png" class="arrow" alt=""></button> 
+                <button class="arrows-button text-switch-btn" onclick="onSwitchLines(1)"><img src="img/site-img/change-text.png" class="arrow" alt=""></button> 
+                <img src="img/site-img/gallery-main.png" class="main-gallery-img" alt="">
+              </section>
+            </main>
+            <section class="gallery ">
                 <img class="gallery-img" id="1" src="img/meme-img/1.jpg" alt="" onclick="onSetImg(this.src, this.id)">
                 <img class="gallery-img" id="2" src="img/meme-img/2.jpg" alt="" onclick="onSetImg(this.src, this.id)">
                 <img class="gallery-img" id="3" src="img/meme-img/3.jpg" alt="" onclick="onSetImg(this.src, this.id)">
             </section>
-    </main>
 
 
 
@@ -48,7 +49,7 @@
         </div>
       </footer>
 
-     <script src="js/service/canvas-service.js"></script>
+     <!-- <script src="js/service/canvas-service.js"></script> -->
     <!-- <script src="js/storage-service.js"></script> -->
     <script src="js/service/main-service.js"></script>
     <script src="js/memes-controller.js"></script>

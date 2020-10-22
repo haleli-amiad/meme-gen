@@ -30,12 +30,7 @@ body {
 	margin: 0;
 }
 
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
+h1, h2, h3, h4, h5, h6 {
 	font-weight: normal;
 	display: unset;
 	margin: 0;
@@ -89,7 +84,9 @@ button {
 }
 
 /* Components */
+
 /* Header  */
+
 header.main-header {
 	background-color: #f4f4f4;
 	color: rgb(0, 0, 0);
@@ -111,7 +108,9 @@ header.main-header {
 }
 
 .main-header a {
+	height: 100%;
 	color: inherit;
+	font-weight: bold;
 }
 
 .main-header ul {
@@ -123,7 +122,16 @@ header.main-header {
 	justify-content: center;
 	align-items: center;
 	width: 100px;
-	transition: color .4s;
+	transition: all .4s;
+	cursor: pointer;
+}
+
+.main-header .main-nav li:hover {
+	color: rgb(111, 111, 111);
+}
+
+.main-header .main-nav li {
+	height: 80px;
 }
 
 .main-header .main-nav a {
@@ -180,29 +188,41 @@ main p {
 
 main .start-button {
 	margin-left: 2rem;
-	letter-spacing: 2px;
+	letter-spacing: 1px;
 	font-family: rubik;
+	padding-top: 2px;
+	text-align: center;
 	font-weight: bolder;
-	border-color: rgb(169, 169, 169);
+	border: 2px solid rgb(46, 46, 46);
 	text-transform: uppercase;
 	border-radius: 5px;
 	cursor: pointer;
-	background-color: rgba(242, 242, 242, 0.577);
-	height: 2.3rem;
-	color: #000000;
-	box-shadow: 2px 3px 6px 0 rgba(133, 133, 133, 0.214), inset 1px 2px 0 0 #fff;
+	background-color: rgba(50, 50, 50, 0.577);
+	/* height: 2.3rem; */
+	color: #fff;
+	box-shadow: inset 1px 2px 0 0 rgb(213, 213, 213);
+	/* box-shadow: 2px 3px 6px 0 rgba(42, 176, 206, 0.214), inset 1px 2px 0 0 rgb(213, 213, 213); */
 	/* margin-inline-start: 1.7rem; */
 	margin-block-start: 1rem;
 	grid-column: 7 / span 2;
+	width: 8rem;
+	height: 1.8rem;
 	grid-row: 10;
 	z-index: 2;
 	outline: none;
+	transition: all .6s;
+}
+
+.start-button:hover {
+	background-color: rgb(172, 153, 7);
+	box-shadow: 8px 6px 7px 0 rgba(62, 62, 56, 0.214), inset 1px 2px 0 0 rgb(213, 213, 213);
 }
 
 /* Footer */
+
 footer {
 	background-color: #f4f4f4;
-	position: absolute;
+	position: sticky;
 	z-index: 3;
 	bottom: 0;
 	width: 100vw;

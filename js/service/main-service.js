@@ -29,21 +29,28 @@ var gMeme = {
             txt: 'change this',
             font: 'impact',
             size: 48,
-            align: 'left',
+            align: 'center',
+            stroke: 'black',
             color: 'white',
-            posX: 100,
+            posX: 450,
             posY: 50,
+            isCurrLine: true
+        },
+        {
+            txt: 'change that',
+            font: 'impact',
+            size: 48,
+            align: 'center',
+            stroke: 'black',
+            color: 'white',
+            posX: 200,
+            posY: 310,
+            isCurrLine: false
         }
-        // {
-        //     txt: 'lala',
-        //     size: 25,
-        //     align: 'left',
-        //     color: 'white',
-        //     posX: 150,
-        //     posY: 280,
-        // }
     ]
 };
+
+//google how to find height and width of text with canvas
 
 function getPics() {
     return gImgs
@@ -69,20 +76,19 @@ function getMeme() {
     return gMeme;
 }
 
+function getSelectedLineIdx() {
+    return gMeme.selectedLineIdx
+}
+
 function getImgById(id) {
-    var img = gImgs.find((img) => img.id === +id);
-    // console.log(img);
+    var img = gImgs.find((img) => img.id === id);
     return img;
 }
 
 function updateFontSize(diff) {
-    // let line = getLine()
-    // line.size += diff
-    // debugger
-    console.log(gMeme.lines[gMeme.selectedLineIdx].size += diff);
     return gMeme.lines[gMeme.selectedLineIdx].size += diff;
-    // line.size += +diff;
 }
+
 function getFont() {
     return gMeme.lines[gMeme.selectedLineIdx].font;
 }
@@ -105,4 +111,67 @@ function getPosX() {
 
 function getPosY() {
     return gMeme.lines[gMeme.selectedLineIdx].posY;
+}
+
+function updateTextLoc(diff) {
+    return gMeme.lines[gMeme.selectedLineIdx].posY += diff;
+}
+
+function getMemeText() {
+    return getLine().txt;
+}
+
+function updateText(txt) {
+    gMeme.lines[gMeme.selectedLineIdx].txt = txt;
+}
+
+function switchLines(diff) {
+    if (gMeme.selectedLineIdx + diff >= gMeme.lines.length) {
+        gMeme.selectedLineIdx = -1;
+    }
+    return gMeme.selectedLineIdx += +diff;
+}
+
+function addLine() {
+    let line = {
+        txt: 'change it!',
+        font: 'impact',
+        size: 48,
+        align: 'center',
+        stroke: 'black',
+        color: 'white',
+        posX: 300,
+        posY: 170,
+        isCurrLine: false
+    }
+    gMeme.lines.push(line)
+    gMeme.selectedLineIdx = gMeme.lines.length - 1;
+}
+
+function restartLines() {
+    gMeme.lines = [
+        {
+            txt: 'change this',
+            font: 'impact',
+            size: 48,
+            align: 'center',
+            stroke: 'black',
+            color: 'white',
+            posX: 300,
+            posY: 60,
+            isCurrLine: true
+        },
+        {
+            txt: 'change that',
+            font: 'impact',
+            size: 48,
+            align: 'center',
+            stroke: 'black',
+            color: 'white',
+            posX: 300,
+            posY: 310,
+            isCurrLine: false
+        }
+    ]
+    return gMeme
 }
