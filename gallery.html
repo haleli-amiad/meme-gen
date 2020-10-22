@@ -3,7 +3,7 @@
     <head>
         <meta charset="UTF-8"
         ><meta name="viewport"content="width=device-width, initial-scale=1.0">
-        <title>Memeit</title>
+        <title>MemeIt</title>
         <link rel="stylesheet" href="css/main.css">
         <link rel="stylesheet" href="css/gallery.css">
     </head>
@@ -18,28 +18,48 @@
                 </ul>
                 </section>
        </header>
-     <main class="canvas-container container">
+     <main class="canvas-container hide">
             <canvas id="my-canvas" height="320" width="600" onclick="draw(event)"></canvas>
             <section class="preferences">
                <label for="text"></label>
                <input type="text" name="text" placeholder="Write your text"  oninput="onGetText(this.value)" class="text"/>
-               <!-- <button type="submit" onclick="onGetText()">Add</button>s -->
                <button class="arrows-button text-add-btn" onclick="onAddLine()"><img src="img/site-img/add-line.png" class="arrow" alt=""></button>  
              <button class="arrows-button text-plus-btn" onclick="onSetFontSize(1)"><img src="img/site-img/text-plus.png" class="arrow" alt=""></button>  
                <button class="arrows-button text-minus-btn" onclick="onSetFontSize(-1)"><img src="img/site-img/text-minus.png" class="arrow" alt=""></button>  
                 <button class="arrows-button text-up-btn" onclick="onChangeTextPos(-3)"><img src="img/site-img/arrow-up.png" class="arrow" alt=""></button>  
                   <button class="arrows-button text-down-btn" onclick="onChangeTextPos(3)"><img src="img/site-img/arrow-down.png" class="arrow" alt=""></button> 
                 <button class="arrows-button text-switch-btn" onclick="onSwitchLines(1)"><img src="img/site-img/change-text.png" class="arrow" alt=""></button> 
-                <img src="img/site-img/gallery-main.png" class="main-gallery-img" alt="">
+                <button class="arrows-button text-delete-btn" onclick="onDeleteLine()"><img src="img/site-img/delete-btn.png" class="arrow" alt=""></button> 
+                <img src="img/site-img/gallery-main.png" class="main-canvas-img" alt="">
+ <a class="arrows-button save-btn" download="" onclick="onDownloadCanvas(this)"><img class="download" src="img/site-img/save-btn.png" alt=""></a>
+ <!-- <button class="arrows-button share-btn" onclick="onDeleteLine()"><img src="img/site-img/share-btn.png" alt=""></button> -->
+ <!-- <button class="arrows-button facebook-btn" onclick="onDeleteLine()"><img src="img/site-img/facebook-btn.png" alt=""></button> -->
+                        <select id="font" onchange="onSetFontFamily(this.value)">
+            <option>Select font:</option>
+            <option value="impact">Impact(default)</option>
+            <option value="arial">Arial</option>
+            <option value="helvetica">Helvetica</option>
+            <option value="serif">Serif</option>
+        </select>
+          <label for="choose-color">
+        <img src="img/site-img/color-picker.png" class="color-picker" alt="">
+                <input type="color" id="choose-color" class="choose-color" oninput="onSetTextColor(this.value)">
+            </label>
               </section>
             </main>
-            <section class="gallery ">
-                <img class="gallery-img" id="1" src="img/meme-img/1.jpg" alt="" onclick="onSetImg(this.src, this.id)">
-                <img class="gallery-img" id="2" src="img/meme-img/2.jpg" alt="" onclick="onSetImg(this.src, this.id)">
-                <img class="gallery-img" id="3" src="img/meme-img/3.jpg" alt="" onclick="onSetImg(this.src, this.id)">
+
+
+
+            <div class="gallery-area container">
+                <div class="gallery-header flex container align-center">
+                <h1 class="gallery-title">
+                    1. Pick your meme's picture
+                </h1>
+                <img class="main-gallery-img" src="img/site-img/gallery.png" alt=""></div>
+            <section class="gallery container">
+            
             </section>
-
-
+</div>
 
 
               <footer class="main-footer">

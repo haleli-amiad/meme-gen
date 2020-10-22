@@ -9,13 +9,9 @@ function init() {
 }
 
 function renderCanvas() {
-    // debugger
-    // updateLines(txt);
     let line = getLine()
     const imgId = getMeme().selectedImgId;
     const img = getImgById(imgId);
-    // console.log(img);
-    // console.log(imgId);
     drawImg(img.url, imgId)
     drawText(line.txt.toUpperCase(), line.posX, line.posY)
 }
@@ -25,9 +21,7 @@ function drawImg(src, id) {
     // console.log(gMeme.selectedImgId);
     if (id !== gMeme.selectedImgId) {
         // debugger
-        var line = gMeme.lines[0]
-        // console.log(line);
-        line.txt = 'change This'
+        var line = getLine()
         // console.log(line.txt);
         drawText(line.txt.toUpperCase(), line.posX, line.posY)
     };
@@ -41,7 +35,7 @@ function drawImg(src, id) {
         lines.forEach(line => {
             drawText(line.txt.toUpperCase(), line.posX, line.posY)
             // console.log(line.txt.toUpperCase());
-            onRenderTextInput(line.txt.toUpperCase())
+            // onRenderTextInput(line.txt.toUpperCase())
         })
         // var text = gMeme.lines[0].txt
 
@@ -51,6 +45,7 @@ function drawImg(src, id) {
 function drawText(text, x = getPosX, y = getPosY) {
     // debugger
     let line = getLine()
+    line.txt = text
     gCtx.strokeStyle = 'black'
     gCtx.fillStyle = `${getFillColor()}`
     gCtx.lineWidth = '3'
@@ -58,5 +53,11 @@ function drawText(text, x = getPosX, y = getPosY) {
     gCtx.textAlign = `${getAlign()}`
     gCtx.fillText(text, x, y)
     gCtx.strokeText(text, x, y)
-    line.txt = text
+}
+
+function switchLines(diff) {
+    if (gMeme.selectedLineIdx + diff > gMeme.lines.length) {
+        gMeme.selectedLineIdx = -1;
+    }
+    gMeme.selectedLineIdx += diff;
 }

@@ -3,10 +3,18 @@ var gCanvas;
 var gCtx;
 
 function onInit() {
-    gCanvas = document.querySelector('#my-canvas');
-    gCtx = gCanvas.getContext('2d');
     renderGallery()
 }
+
+function onOpenCanvas(url, id) {
+    gCanvas = document.querySelector('#my-canvas');
+    gCtx = gCanvas.getContext('2d');
+    document.querySelector('.canvas-container').classList.remove('hide')
+    document.querySelector('.gallery-area').classList.add('hide')
+    onSetImg(url, id)
+
+}
+
 
 function onSetImg(src, id) {
     restartLines()
@@ -28,12 +36,17 @@ function renderCanvas(src, id) {
     if (id && id !== gMeme.selectedImgId) {
         setCurrImageId(id)
         return drawImg(src)
-    } else {
-        const imgId = getMeme().selectedImgId;
-        const img = getImgById(+imgId);
-        drawImg(img.url)
-
     }
+    const imgId = getMeme().selectedImgId;
+    const img = getImgById(+imgId);
+    // if (getMeme().isToDownload) {
+    //     const lines = getLines()
+    //     lines.forEach(line => {
+    //         line.isCurrLine = false;
+    //     })
+    //     drawImg(img.url)
+    // }
+    drawImg(img.url)
 }
 
 function drawImg(src) {
@@ -45,14 +58,31 @@ function drawImg(src) {
         lines.forEach(line => {
             drawText(line, line.txt.toUpperCase(), line.posX, line.posY)
         })
-        onDrawMarkRect()
+        if (!getMeme().isToDownload) onDrawMarkRect()
     }
+}
+
+function onDownloadCanvas(elLink) {
+    getMeme().isToDownload = true;
+    const lines = getLines()
+    lines.forEach(line => {
+        line.isCurrLine = false;
+    })
+    renderCanvas()
+    setTimeout(function () {
+        // const data = gCanvas.toDataURL()
+        // elLink.href = data
+        // elLink.download = 'meme.png'
+        var imgContent = gCanvas.toDataURL('image/png');
+        elLink.href = imgContent
+        // elLink.click();
+    }, 50);
 }
 
 function drawText(line, text, x = getPosX, y = getPosY) {
     gCtx.strokeStyle = `${line.stroke}`
     gCtx.fillStyle = `${line.color}`
-    gCtx.lineWidth = '3'
+    gCtx.lineWidth = '2'
     gCtx.font = `${line.size}px ${line.font}`;
     gCtx.textAlign = `${line.align}`
     gCtx.fillText(text, x, y)
@@ -107,6 +137,20 @@ function onDrawMarkRect() {
     gCtx.fill()
 }
 
+function onDeleteLine() {
+    deleteLine()
+    renderCanvas()
+}
 
-// onDeleteLine , onChangeFont , onChangeFillColor, onChangeStrokeColor, onAddSticker,
+function onSetFontFamily(font) {
+    setFontFamily(font)
+    renderCanvas()
+}
+
+function onSetTextColor(color) {
+    setTextColor(color)
+    renderCanvas()
+}
+
+// onAddSticker,
 // onFocusOnText, onSave, onDownload , onAlign, searchByKeyWord, onShareOnFacebook , 

@@ -28,6 +28,7 @@ html {
 body {
 	font-size: 1.05rem;
 	margin: 0;
+	overflow-x: hidden;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -94,8 +95,13 @@ header.main-header {
 }
 
 .main-header {
+	position: sticky;
+	width: 100vw;
 	top: 0;
 	box-shadow: 1px 1px 2px 0 rgba(0, 0, 0, 0.15);
+	z-index: 6;
+	height: 3rem;
+	font-size: 0.9rem;
 }
 
 .head-container {
@@ -103,8 +109,8 @@ header.main-header {
 }
 
 .container .logo {
-	margin-top: 10px;
-	width: 8.5rem;
+	margin-top: 7px;
+	width: 5.5rem;
 }
 
 .main-header a {
@@ -141,53 +147,64 @@ header.main-header {
 
 /* Main */
 
-main {
+.main-content {
+	position: fixed;
 	margin: 0 auto;
-	width: 80vw;
-	height: 80vh;
+	width: 100%;
+	max-height: 55rem;
 	display: grid;
-	grid-template-columns: repeat(15, 1fr);
-	grid-template-rows: repeat(15, 1fr);
+	grid-template-columns: repeat(7, 1fr);
+	grid-template-rows: repeat(9, 1fr);
+	/* z-index: -5; */
 }
 
 main .main-image {
-	height: 100%;
-	/* width: 100vw; */
-	max-width: 37rem;
-	object-fit: cover;
-	grid-column: 1 / span 15;
-	grid-row: 1 / span 15;
-	opacity: 95%;
-	z-index: 1;
+	margin: 0 auto;
+	/* min-height: 60rem; */
+	width: unset;
+	object-fit: contain;
+	grid-column: 1 / span 4;
+	grid-row: 2 / span 6;
+	opacity: 85%;
+	z-index: -1;
+}
+
+h1.headline {
+	text-align: center;
 }
 
 main .headline {
 	text-shadow: 3px 3px 2px #dcdcdc;
 	text-align: center;
 	color: #292929;
-	margin-left: 2rem;
-	font-size: 3.3rem;
+	/* margin-left: 2rem; */
+	font-size: 3.8rem;
 	text-align: start;
 	font-family: dosis, sans serif;
-	grid-column: 7 / span 7;
-	grid-row: 5 / span 2;
+	grid-column: 4 / span 3;
+	grid-row: 2 / span 1;
+	padding: 0;
+	border-bottom: 1px solid rgba(182, 182, 182, 0.481);
 	z-index: 2;
+	margin-bottom: 1rem;
 	/* margin-bottom: 0; */
 }
 
 main p {
 	text-shadow: 2px 2px 2px #dddddd;
 	z-index: 2;
-	margin-left: 2rem;
-	margin-top: 1rem;
+	/* margin-left: 3rem; */
+	/* margin-top: 1rem; */
 	line-height: 1.5rem;
 	letter-spacing: 0.1rem;
-	grid-column: 7 / span 6;
-	grid-row: 8 / span 3;
+	grid-column: 4 / span 2;
+	grid-row: 3 / span 2;
+	padding-inline-start: 5px;
 }
 
 main .start-button {
-	margin-left: 2rem;
+	margin-left: 0.3rem;
+	padding: 7px;
 	letter-spacing: 1px;
 	font-family: rubik;
 	padding-top: 2px;
@@ -201,13 +218,12 @@ main .start-button {
 	/* height: 2.3rem; */
 	color: #fff;
 	box-shadow: inset 1px 2px 0 0 rgb(213, 213, 213);
-	/* box-shadow: 2px 3px 6px 0 rgba(42, 176, 206, 0.214), inset 1px 2px 0 0 rgb(213, 213, 213); */
+	box-shadow: 2px 3px 6px 0 rgba(42, 176, 206, 0.214), inset 1px 2px 0 0 rgb(213, 213, 213);
 	/* margin-inline-start: 1.7rem; */
-	margin-block-start: 1rem;
-	grid-column: 7 / span 2;
-	width: 8rem;
+	/* margin-block-start: 1rem; */
+	grid-column: 4 / span 1;
+	grid-row: 4;
 	height: 1.8rem;
-	grid-row: 10;
 	z-index: 2;
 	outline: none;
 	transition: all .6s;
@@ -222,14 +238,16 @@ main .start-button {
 
 footer {
 	background-color: #f4f4f4;
-	position: sticky;
-	z-index: 3;
+	position: fixed;
 	bottom: 0;
+	right: 0;
 	width: 100vw;
-	/* height: 50px; */
 	box-shadow: inset 0 1px 0 #e1e0e0;
-	padding-block-start: 1rem;
+	padding-block-start: 0.5rem;
 	padding-block-end: 1rem;
+	width: 100%;
+	height: 3.3rem;
+	font-size: 14px;
 }
 
 .footer-container {
@@ -238,7 +256,5 @@ footer {
 }
 
 footer .container .logo {
-	color: #292929;
-	width: 5rem;
-	font-size: 16px;
+	width: 3rem;
 }

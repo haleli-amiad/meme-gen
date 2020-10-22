@@ -24,7 +24,6 @@ var gImgs = [
 var gMeme = {
     selectedImgId: 0,
     selectedLineIdx: 0,
-    isToDownload: false,
     lines: [
         {
             txt: 'change this',
@@ -175,19 +174,4 @@ function restartLines() {
         }
     ]
     return gMeme
-}
-
-function deleteLine() {
-    var line = gMeme.selectedLineIdx;
-    gMeme.lines.splice(line, 1)
-}
-
-function setFontFamily(font) {
-    let line = getLine()
-    line.font = font
-}
-
-function setTextColor(color) {
-    let line = getLine()
-    line.color = color
 }
