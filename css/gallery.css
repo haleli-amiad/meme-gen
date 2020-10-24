@@ -15,7 +15,7 @@ button {
 }
 
 button:hover {
-    background-color: rgb(172, 153, 7);
+    background-color: rgb(247, 226, 68);
 }
 
 /* GALLERY  */
@@ -68,7 +68,7 @@ button:hover {
     box-shadow: -5px 5px 0px 0px rgba(242, 225, 38, 0.454);
     cursor: pointer;
     animation: none;
-    transition: box-shadow .4s;
+    transition: box-shadow .6s;
 }
 
 .gallery-img:hover {
@@ -93,7 +93,8 @@ h1.gallery-title {
     flex-wrap: wrap;
     align-content: space-between;
     gap: 1rem;
-    border: 2px solid rgba(114, 114, 114, 0.563);
+    background-color: #f4f4f4;
+    box-shadow: 0px 0px 5px 0px rgba(130, 130, 130, 0.45);
     border-radius: 3rem;
     max-width: 70rem;
     flex-wrap: wrap;
@@ -149,7 +150,8 @@ input.edit-line {
     grid-column: 1 / span 4;
     grid-row: 1;
     font-family: rubik;
-    font-size: 1.1rem;
+    font-size: 0.9rem;
+    color: black !important;
     height: 1.9rem;
 }
 
@@ -200,7 +202,7 @@ img.download {
 }
 
 .save-btn {
-    background-color: rgb(254, 212, 212);
+    background-color: rgba(3, 1, 26, 0.555);
     padding: 0;
     border: 1px solid gray;
     border-radius: 7px;
@@ -208,13 +210,13 @@ img.download {
     transition: all .6s;
     padding: 3px;
     cursor: pointer;
-    box-shadow: 3px 3px 4px 0 rgba(62, 62, 56, 0.214), inset 2px 2px 0 0 rgb(254, 212, 212);
+    box-shadow: 3px 3px 4px 0 rgba(62, 62, 56, 0.214);
     grid-column: 3;
     grid-row: 2;
 }
 
 .edit-text {
-    background-color: rgba(254, 247, 174, 0.493);
+    background-color: rgba(3, 1, 26, 0.555);
     border-radius: 1rem;
     box-shadow: 0px 0px 5px 0px rgba(114, 113, 113, 0.85);
     grid-column: 1 / span 4;
@@ -224,9 +226,10 @@ img.download {
     flex-direction: row;
     height: 7.5rem;
     padding: 5px 0;
-    width: 9.5rem;
-    justify-content: center;
-    align-content: space-between;
+    width: 9.3rem;
+    justify-content: space-between;
+    align-content: space-around;
+    padding: 9px;
 }
 
 .color-picker {
@@ -244,7 +247,7 @@ img.download {
 }
 
 .color-picker:hover {
-    background-color: rgb(172, 153, 7);
+    background-color: rgb(247, 226, 68);
 }
 
 .choose-color {
@@ -267,6 +270,15 @@ button.open-stickers-btn:hover {
 .open-stickers-btn img {
     width: 50px;
     height: 50px;
+}
+
+.elmo-canvas-img {
+    width: 40%;
+    height: 40%;
+    object-fit: contain;
+    position: fixed;
+    left: 70px;
+    top: 370px;
 }
 
 /* STICKERS */
@@ -352,6 +364,12 @@ button.open-stickers-btn:hover {
         margin: 0 auto;
         width: 50%;
     }
+    .elmo-canvas-img {
+        width: 35%;
+        height: 35%;
+        left: 60px;
+        top: 450px;
+    }
     .color-picker {
         width: 2rem;
         height: 2rem;
@@ -376,13 +394,13 @@ button.open-stickers-btn:hover {
         border-radius: 10px;
     }
     .edit-text {
-        background-color: rgba(254, 247, 174, 0.493);
+        background-color: rgba(3, 1, 26, 0.555);
         border-radius: 1rem;
         box-shadow: 0px 0px 5px 0px rgba(114, 113, 113, 0.85);
         grid-column: 5 / span 4;
         grid-row: 3 / span 2;
         height: 7rem;
-        padding: 5px 0;
+        padding: 5px;
         width: 7.5rem;
     }
     .text-up-btn {
@@ -428,6 +446,12 @@ button.open-stickers-btn:hover {
 }
 
 @media (max-width: 1000px) {
+    .elmo-canvas-img {
+        width: 30%;
+        height: 30%;
+        left: 20px;
+        top: 510px;
+    }
     .stickers-section {
         left: 38rem;
         height: 54%;
@@ -469,6 +493,12 @@ button.open-stickers-btn:hover {
 }
 
 @media (max-width: 750px) {
+    .elmo-canvas-img {
+        width: 25%;
+        height: 25%;
+        left: 0px;
+        top: 470px;
+    }
     .stickers-section {
         left: 25rem;
     }
@@ -537,21 +567,21 @@ button.open-stickers-btn:hover {
 
 @keyframes meme {
     0% {
-        box-shadow: -5px 5px 0px 0px rgba(242, 225, 38, 0.454);
+        box-shadow: -5px 5px 0px 0px rgba(235, 226, 134, 0.61);
     }
     25% {
-        box-shadow: -5px 5px 0px 0px rgb(215, 129, 212);
+        box-shadow: -5px 5px 0px 0px rgb(215, 171, 129);
     }
     50% {
-        box-shadow: -5px 5px 0px 0px rgb(174, 218, 173);
+        box-shadow: -5px 5px 0px 0px rgb(228, 168, 168);
     }
     75% {
-        box-shadow: -5px 5px 0px 0px rgb(117, 121, 190);
+        box-shadow: -5px 5px 0px 0px rgb(206, 152, 206);
     }
     90% {
-        box-shadow: -5px 5px 0px 0px rgb(215, 129, 212);
+        box-shadow: -5px 5px 0px 0px rgb(164, 219, 196);
     }
     100% {
-        box-shadow: -5px 5px 0px 0px rgba(242, 225, 38, 0.454);
+        box-shadow: -5px 5px 0px 0px rgba(139, 221, 139, 0.454);
     }
 }
