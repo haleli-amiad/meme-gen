@@ -1,0 +1,130 @@
+.main-content {
+    position: fixed;
+    margin: 0 auto;
+    width: 100%;
+    max-height: 55rem;
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    grid-template-rows: repeat(9, 1fr);
+}
+
+main .meme-image {
+    margin: 0 auto;
+    width: unset;
+    object-fit: contain;
+    grid-column: 7 / span 6;
+    grid-row: 1 / span 6;
+    opacity: 100%;
+    z-index: -1;
+}
+
+main .bold-p {
+    display: block;
+    font-family: rubik-bold;
+    text-transform: capitalize;
+    color: rgb(73, 73, 73);
+}
+
+main .meme-headline {
+    text-shadow: 3px 3px 2px #dcdcdc;
+    text-align: center;
+    color: #292929;
+    font-size: 7rem;
+    text-align: center;
+    font-family: dosis, sans serif;
+    grid-column: 8 / span 2;
+    grid-row: 2 / span 1;
+    padding: 0;
+    z-index: 2;
+    margin-bottom: 1rem;
+}
+
+main .sub-headline {
+    text-shadow: 3px 3px 2px #dcdcdc;
+    text-align: center;
+    color: #292929;
+    font-size: 3rem;
+    text-align: start;
+    font-family: dosis, sans serif;
+    grid-column: 7 / span 4;
+    grid-row: 3 / span 1;
+    border-bottom: 1px solid rgba(182, 182, 182, 0.481);
+    z-index: 2;
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+main p {
+    text-shadow: 2px 2px 2px #dddddd;
+    z-index: 2;
+    color: black;
+    line-height: 1.5rem;
+    letter-spacing: 0.1rem;
+    text-align: center;
+    grid-column: 7 / span 4;
+    grid-row: 4 / span 1;
+    padding-inline-start: 5px;
+}
+
+main .start-button {
+    margin-left: 0.3rem;
+    padding: 7px;
+    letter-spacing: 1px;
+    font-family: rubik;
+    padding-top: 2px;
+    text-align: center;
+    font-weight: bolder;
+    border: 2px solid rgb(46, 46, 46);
+    text-transform: uppercase;
+    border-radius: 5px;
+    cursor: pointer;
+    background-color: rgba(50, 50, 50, 0.577);
+    color: #fff;
+    box-shadow: inset 1px 2px 0 0 rgb(213, 213, 213);
+    box-shadow: 2px 3px 6px 0 rgba(42, 176, 206, 0.214), inset 1px 2px 0 0 rgb(213, 213, 213);
+    grid-column: 8 / span 2;
+    grid-row: 5;
+    height: 1.8rem;
+    z-index: 2;
+    outline: none;
+    transition: all .6s;
+}
+
+.start-button:hover {
+    background-color: rgb(172, 153, 7);
+    box-shadow: 8px 6px 7px 0 rgba(62, 62, 56, 0.214), inset 1px 2px 0 0 rgb(213, 213, 213);
+}
+
+@media (max-width: 1030px) {
+    main .meme-headline {
+        grid-column: 4 / span 5;
+    }
+    main .sub-headline {
+        grid-column: 4 / span 5;
+    }
+    main p {
+        font-size: 1rem;
+        font-family: rubik-bold;
+        grid-column: 4 / span 5;
+    }
+    main .start-button {
+        grid-column: 4 / span 5;
+    }
+}
+
+@media (max-width: 690px) {
+    main .meme-headline {
+        grid-column: 2 / span 6;
+    }
+    main .sub-headline {
+        grid-column: 2 / span 6;
+    }
+    main p {
+        font-size: 1rem;
+        font-family: rubik-bold;
+        grid-column: 2 / span 6;
+    }
+    main .start-button {
+        grid-column: 2 / span 6;
+    }
+}

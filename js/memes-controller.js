@@ -12,7 +12,7 @@ function onOpenCanvas(url, id) {
     document.querySelector('.canvas-container').classList.remove('hide')
     document.querySelector('.gallery-area').classList.add('hide')
     onSetImg(url, id)
-
+    renderStickers()
 }
 
 
@@ -22,13 +22,13 @@ function onSetImg(src, id) {
 }
 
 function onRenderTextInput(txt) {
-    let input = document.querySelector('input')
+    const input = document.querySelector('input')
     input.value = txt
 }
 
 function onGetText(newTxt) {
-    updateText(newTxt)
     var newTxt = document.querySelector('[name=text]').value.toUpperCase();
+    updateText(newTxt)
     renderCanvas()
 }
 
@@ -39,18 +39,13 @@ function renderCanvas(src, id) {
     }
     const imgId = getMeme().selectedImgId;
     const img = getImgById(+imgId);
-    // if (getMeme().isToDownload) {
-    //     const lines = getLines()
-    //     lines.forEach(line => {
-    //         line.isCurrLine = false;
-    //     })
-    //     drawImg(img.url)
-    // }
     drawImg(img.url)
 }
 
 function drawImg(src) {
+
     const lines = getLines()
+    const stickers = getStickers()
     var img = new Image()
     img.src = src;
     img.onload = () => {
@@ -58,7 +53,12 @@ function drawImg(src) {
         lines.forEach(line => {
             drawText(line, line.txt.toUpperCase(), line.posX, line.posY)
         })
-        if (!getMeme().isToDownload) onDrawMarkRect()
+        stickers.forEach(sticker => {
+            if (sticker.isOnCanvas) onPutSticker(sticker.url, sticker.id)
+        })
+        if (!getMeme().isToDownload) {
+            onDrawMarkRect()
+        }
     }
 }
 
@@ -70,16 +70,13 @@ function onDownloadCanvas(elLink) {
     })
     renderCanvas()
     setTimeout(function () {
-        // const data = gCanvas.toDataURL()
-        // elLink.href = data
-        // elLink.download = 'meme.png'
         var imgContent = gCanvas.toDataURL('image/png');
         elLink.href = imgContent
-        // elLink.click();
-    }, 50);
+    }, 10);
 }
 
 function drawText(line, text, x = getPosX, y = getPosY) {
+
     gCtx.strokeStyle = `${line.stroke}`
     gCtx.fillStyle = `${line.color}`
     gCtx.lineWidth = '2'
@@ -117,15 +114,20 @@ function onAddLine() {
 }
 
 function onGetMarkSize(line) {
-    var textHeight = line.size;
-    var textWidth = gCtx.measureText(line.txt).width
-    var markSize = { x: line.posX, y: line.posY, width: textWidth, height: textHeight }
+    const textHeight = line.size;
+    const textWidth = gCtx.measureText(line.txt).width
+    const markSize = { x: line.posX, y: line.posY, width: textWidth, height: textHeight }
     return markSize;
 }
 
 function onDrawMarkRect() {
     let line = getLine()
-    var markSize = onGetMarkSize(line);
+    if (typeof line === "undefined") {
+        setCurrLineIdx(0)
+        line = getLine()
+        if (getLines().length === 0) return
+    }
+    const markSize = onGetMarkSize(line);
     if (getLines()[getSelectedLineIdx()] !== line) return
     line.isCurrLine = true;
     gCtx.beginPath();
@@ -152,5 +154,35 @@ function onSetTextColor(color) {
     renderCanvas()
 }
 
-// onAddSticker,
-// onFocusOnText, onSave, onDownload , onAlign, searchByKeyWord, onShareOnFacebook , 
+function onSetAlign(align) {
+    setAlign(align)
+    renderCanvas()
+}
+
+function onGetLineToDrag(ev) {
+    var lines = getLines();
+    lines.forEach((line, i) => {
+        if (ev.offsetX > gCtx.measureText(line.txt).width && ev.offsetY > line.posY) {
+            setCurrLineIdx(i)
+            line.isCurrLine = true;
+            line.isToDrag = true;
+            renderCanvas();
+        }
+    })
+}
+
+function onDragLine(ev) {
+    if (getLine().isToDrag) {
+        dragLine(ev.offsetX, ev.offsetY);
+        renderCanvas();
+    }
+}
+
+function onMouseReleased() {
+    renderCanvas();
+    var lines = getLines()
+    lines.forEach(line => {
+        line.isCurrLine = false
+        line.isToDrag = false
+    })
+}

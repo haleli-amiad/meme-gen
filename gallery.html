@@ -1,78 +1,119 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8"
-        ><meta name="viewport"content="width=device-width, initial-scale=1.0">
-        <title>MemeIt</title>
-        <link rel="stylesheet" href="css/main.css">
-        <link rel="stylesheet" href="css/gallery.css">
-    </head>
- <body onload="onInit()">
-        <header class="main-header">
-            <section class="head-container container flex space-between align-center">
-                <a href="index.html"><img class="logo"src="img/logo.svg"alt=""></a>
-                <ul class="main-nav clean-list flex">
-                    <li><a href="gallery.html">Gallery</a></li>
-                    <li><a href="#">Memes</a></li>
-                    <li><a href="#">About</a></li>
-                </ul>
-                </section>
-       </header>
-     <main class="canvas-container hide">
-            <canvas id="my-canvas" height="320" width="600" onclick="draw(event)"></canvas>
-            <section class="preferences">
-               <label for="text"></label>
-               <input type="text" name="text" placeholder="Write your text"  oninput="onGetText(this.value)" class="text"/>
-               <button class="arrows-button text-add-btn" onclick="onAddLine()"><img src="img/site-img/add-line.png" class="arrow" alt=""></button>  
-             <button class="arrows-button text-plus-btn" onclick="onSetFontSize(1)"><img src="img/site-img/text-plus.png" class="arrow" alt=""></button>  
-               <button class="arrows-button text-minus-btn" onclick="onSetFontSize(-1)"><img src="img/site-img/text-minus.png" class="arrow" alt=""></button>  
-                <button class="arrows-button text-up-btn" onclick="onChangeTextPos(-3)"><img src="img/site-img/arrow-up.png" class="arrow" alt=""></button>  
-                  <button class="arrows-button text-down-btn" onclick="onChangeTextPos(3)"><img src="img/site-img/arrow-down.png" class="arrow" alt=""></button> 
-                <button class="arrows-button text-switch-btn" onclick="onSwitchLines(1)"><img src="img/site-img/change-text.png" class="arrow" alt=""></button> 
-                <button class="arrows-button text-delete-btn" onclick="onDeleteLine()"><img src="img/site-img/delete-btn.png" class="arrow" alt=""></button> 
-                <img src="img/site-img/gallery-main.png" class="main-canvas-img" alt="">
- <a class="arrows-button save-btn" download="" onclick="onDownloadCanvas(this)"><img class="download" src="img/site-img/save-btn.png" alt=""></a>
- <!-- <button class="arrows-button share-btn" onclick="onDeleteLine()"><img src="img/site-img/share-btn.png" alt=""></button> -->
- <!-- <button class="arrows-button facebook-btn" onclick="onDeleteLine()"><img src="img/site-img/facebook-btn.png" alt=""></button> -->
-                        <select id="font" onchange="onSetFontFamily(this.value)">
-            <option>Select font:</option>
-            <option value="impact">Impact(default)</option>
-            <option value="arial">Arial</option>
-            <option value="helvetica">Helvetica</option>
-            <option value="serif">Serif</option>
-        </select>
-          <label for="choose-color">
-        <img src="img/site-img/color-picker.png" class="color-picker" alt="">
-                <input type="color" id="choose-color" class="choose-color" oninput="onSetTextColor(this.value)">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MemeIt</title>
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/gallery.css">
+</head>
+
+<body onload="onInit()">
+    <!-- header -->
+    <header class="main-header">
+        <section class="head-container container flex space-between align-center">
+            <a href="index.html"><img class="logo" src="img/logo.svg" alt=""></a>
+            <ul class="main-nav clean-list flex">
+                <li><a href="gallery.html">Gallery</a></li>
+                <li><a href="memes.html">Memes</a></li>
+                <li><a href="about.html">About</a></li>
+            </ul>
+        </section>
+    </header>
+    <!-- canvas & preferences control -->
+    <main class="canvas-container container hide">
+        <div class="stickers-section hide">
+        </div>
+        <canvas id="my-canvas" height="320" width="600" onmousedown="onGetLineToDrag(event)"
+            onmousemove="onDragLine(event)" onmouseup="onMouseReleased()"></canvas>
+        <section class="preferences">
+            <label for="text"></label>
+            <input class="edit-line" type="text" name="text" placeholder="Write your text"
+                oninput="onGetText(this.value)" class="text" />
+            <button class="pref-button text-add-btn" onclick="onAddLine()"><img src="img/site-img/add-line.png"
+                    class="arrow" alt=""></button>
+            <button class="pref-button text-up-btn" onclick="onChangeTextPos(-3)"><img src="img/site-img/text-up.png"
+                    class="arrow" alt=""></button>
+            <select class="select-font" id="font" onchange="onSetFontFamily(this.value)">
+                <option>Select font:</option>
+                <option value="impact">Impact(default)</option>
+                <option value="arial">Arial</option>
+                <option value="helvetica">Helvetica</option>
+                <option value="serif">Serif</option>
+            </select>
+            <div class="edit-text">
+                <button class="pref-button align-left-btn" onclick="onSetAlign('left')"><img
+                        src="img/site-img/align-left.png" class="arrow" alt=""></button>
+                <button class="pref-button align-center-btn" onclick="onSetAlign('center')"><img
+                        src="img/site-img/align-center.png" class="arrow" alt=""></button>
+                <button class="pref-button align-right-btn" onclick="onSetAlign('right')"><img
+                        src="img/site-img/align-right.png" class="arrow" alt=""></button>
+                <button class="pref-button text-plus-btn" onclick="onSetFontSize(1)"><img
+                        src="img/site-img/text-plus.png" class="arrow" alt=""></button>
+                <button class="pref-button text-minus-btn" onclick="onSetFontSize(-1)"><img
+                        src="img/site-img/text-minus.png" class="arrow" alt=""></button>
+                <label for="choose-color">
+                    <img src="img/site-img/color-picker.png" class="color-picker" alt="">
+                    <input type="color" id="choose-color" class="choose-color" oninput="onSetTextColor(this.value)">
+                </label>
+            </div>
+            <button class="pref-button text-down-btn" onclick="onChangeTextPos(3)"><img src="img/site-img/text-down.png"
+                    class="arrow" alt=""></button>
+            <button class="pref-button text-switch-btn" onclick="onSwitchLines(1)"><img
+                    src="img/site-img/text-switch.png" class="arrow" alt=""></button>
+            <button class="pref-button text-delete-btn" onclick="onDeleteLine()"><img src="img/site-img/delete-btn.png"
+                    class="arrow" alt=""></button>
+            <button class="open-stickers-btn" onclick="onOpenStickers()"><img src="img/stickers-img/3.png" class="arrow"
+                    alt=""></button>
+            <a class="pref-button save-btn" download="" onclick="onDownloadCanvas(this)"><img class="download"
+                    src="img/site-img/save-btn.png" alt=""></a>
+        </section>
+    </main>
+
+    <!-- gallery -->
+    <div class="gallery-area container">
+        <!-- search -->
+        <div class="search-meme container">
+            <label for="search-choices">
+                <h2>Looking for something specific?</h2>
             </label>
-              </section>
-            </main>
+            <input list="search-options" id="search-choices" name="search-choices" />
+            <datalist id="search-options">
+                <option value="all">
+                <option value="happy">
+                <option value="friends">
+                <option value="family">
+                <option value="sad">
+                <option value="love">
+                <option value="angry">
+                <option value="shock">
+            </datalist> <button class="search-btn" onclick="onSetFilter()">Search</button> </div>
+        <!-- gallery header  -->
+        <div class="gallery-header flex container align-center">
+            <h1 class="gallery-title">
+                1. Pick your meme's picture
+            </h1>
+            <img class="main-gallery-img" src="img/site-img/gallery.png" alt="">
+        </div>
+        <!-- pics area  -->
+        <section class="gallery container">
+        </section>
+    </div>
 
-
-
-            <div class="gallery-area container">
-                <div class="gallery-header flex container align-center">
-                <h1 class="gallery-title">
-                    1. Pick your meme's picture
-                </h1>
-                <img class="main-gallery-img" src="img/site-img/gallery.png" alt=""></div>
-            <section class="gallery container">
-            
-            </section>
-</div>
-
-
-              <footer class="main-footer">
-         <div class="footer-container container flex align-center">
-            <a href="#"><img class="logo"src="img/logo.svg"alt=""></a>
+    <!-- footer -->
+    <footer class="main-footer">
+        <div class="footer-container container flex align-center">
+            <a href="#"><img class="logo" src="img/logo.svg" alt=""></a>
             <small>© 2020 Memeit.com - All Rights Reserved</small>
         </div>
-      </footer>
+    </footer>
 
-     <!-- <script src="js/service/canvas-service.js"></script> -->
-    <!-- <script src="js/storage-service.js"></script> -->
     <script src="js/service/main-service.js"></script>
+    <script src="js/service/stickers-service.js"></script>
     <script src="js/memes-controller.js"></script>
     <script src="js/gallery-controller.js"></script>
+    <script src="js/stickers-controller.js"></script>
 </body>
+
 </html>

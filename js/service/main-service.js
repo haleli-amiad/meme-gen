@@ -1,26 +1,26 @@
 'use strict';
 
-var gKeywords = { happy: 12, 'funny puk': 1 };
 var gImgs = [
-    { id: 1, url: 'img/meme-img/1.jpg', keywords: ['happy'] },
-    { id: 2, url: 'img/meme-img/2.jpg', keywords: ['happy'] },
-    { id: 3, url: 'img/meme-img/3.jpg', keywords: ['happy'] },
-    { id: 4, url: 'img/meme-img/4.jpg', keywords: ['happy'] },
-    { id: 5, url: 'img/meme-img/5.jpg', keywords: ['happy'] },
-    { id: 6, url: 'img/meme-img/6.jpg', keywords: ['happy'] },
-    { id: 7, url: 'img/meme-img/7.jpg', keywords: ['happy'] },
-    { id: 8, url: 'img/meme-img/8.jpg', keywords: ['happy'] },
-    { id: 9, url: 'img/meme-img/9.jpg', keywords: ['happy'] },
-    { id: 10, url: 'img/meme-img/9.jpg', keywords: ['happy'] },
-    { id: 11, url: 'img/meme-img/10.jpg', keywords: ['happy'] },
-    { id: 12, url: 'img/meme-img/10.jpg', keywords: ['happy'] },
-    { id: 13, url: 'img/meme-img/11.jpg', keywords: ['happy'] },
-    { id: 14, url: 'img/meme-img/12.jpg', keywords: ['happy'] },
-    { id: 15, url: 'img/meme-img/13.jpg', keywords: ['happy'] },
-    { id: 16, url: 'img/meme-img/14.jpg', keywords: ['happy'] },
-    { id: 17, url: 'img/meme-img/15.jpg', keywords: ['happy'] },
-    { id: 18, url: 'img/meme-img/16.jpg', keywords: ['happy'] },
+    { id: 1, url: 'img/meme-img/1.jpg', keywords: ['all', 'happy', 'friends'] },
+    { id: 2, url: 'img/meme-img/2.jpg', keywords: ['all', 'happy', 'friends'] },
+    { id: 3, url: 'img/meme-img/3.jpg', keywords: ['all', 'friends'] },
+    { id: 4, url: 'img/meme-img/4.jpg', keywords: ['all', 'angry'] },
+    { id: 5, url: 'img/meme-img/5.jpg', keywords: ['all', 'sad'] },
+    { id: 6, url: 'img/meme-img/6.jpg', keywords: ['all', 'shock', 'friends'] },
+    { id: 7, url: 'img/meme-img/7.jpg', keywords: ['all', 'sad', 'shock'] },
+    { id: 8, url: 'img/meme-img/8.jpg', keywords: ['all', 'happy', 'love', 'family'] },
+    { id: 9, url: 'img/meme-img/9.jpg', keywords: ['all', 'angry'] },
+    { id: 10, url: 'img/meme-img/9.jpg', keywords: ['all', 'happy', 'shock'] },
+    { id: 11, url: 'img/meme-img/10.jpg', keywords: ['all', 'angry', 'shock'] },
+    { id: 12, url: 'img/meme-img/10.jpg', keywords: ['all', 'family', 'shock'] },
+    { id: 13, url: 'img/meme-img/11.jpg', keywords: ['all', 'friends', 'happy', 'sad'] },
+    { id: 14, url: 'img/meme-img/12.jpg', keywords: ['all', 'angry', 'friends'] },
+    { id: 15, url: 'img/meme-img/13.jpg', keywords: ['all', 'happy', 'friends', 'love'] },
+    { id: 16, url: 'img/meme-img/14.jpg', keywords: ['all', 'happy', 'friends', 'love'] },
+    { id: 17, url: 'img/meme-img/15.jpg', keywords: ['all', 'happy', 'friends', 'love'] },
+    { id: 18, url: 'img/meme-img/16.jpg', keywords: ['all', 'happy', 'friends', 'love'] },
 ];
+var gFilterBy = 'all'
 var gMeme = {
     selectedImgId: 0,
     selectedLineIdx: 0,
@@ -33,9 +33,10 @@ var gMeme = {
             align: 'center',
             stroke: 'black',
             color: 'white',
-            posX: 450,
+            posX: 0,
             posY: 50,
-            isCurrLine: true
+            isCurrLine: false,
+            isToDrag: false
         },
         {
             txt: 'change that',
@@ -44,14 +45,13 @@ var gMeme = {
             align: 'center',
             stroke: 'black',
             color: 'white',
-            posX: 200,
+            posX: 0,
             posY: 310,
-            isCurrLine: false
+            isCurrLine: false,
+            isToDrag: false
         }
     ]
 };
-
-//google how to find height and width of text with canvas
 
 function getPics() {
     return gImgs
@@ -133,8 +133,10 @@ function switchLines(diff) {
     return gMeme.selectedLineIdx += +diff;
 }
 
+
 function addLine() {
-    let line = {
+    if (getLines().length > 2) return;
+    const line = {
         txt: 'change it!',
         font: 'impact',
         size: 48,
@@ -142,7 +144,7 @@ function addLine() {
         stroke: 'black',
         color: 'white',
         posX: 300,
-        posY: 170,
+        posY: 180,
         isCurrLine: false
     }
     gMeme.lines.push(line)
@@ -170,7 +172,7 @@ function restartLines() {
             stroke: 'black',
             color: 'white',
             posX: 300,
-            posY: 310,
+            posY: 300,
             isCurrLine: false
         }
     ]
@@ -190,4 +192,38 @@ function setFontFamily(font) {
 function setTextColor(color) {
     let line = getLine()
     line.color = color
+}
+
+function setAlign(align) {
+    const line = getLine();
+    var posX;
+    switch (align) {
+        case 'right':
+            posX = gCanvas.width;
+            break;
+        case 'center':
+            posX = gCanvas.width / 2;
+            break;
+        case 'left':
+            posX = 0;
+            break;
+    }
+    line.align = align;
+    line.posX = posX;
+}
+
+function dragLine(x, y) {
+    var line = getLine()
+    line.posX = x;
+    line.posY = y;
+}
+
+function setFilter(filterBy) {
+    gFilterBy = filterBy;
+}
+
+function getImgsForDisplay() {
+    if (gFilterBy === 'all') return gImgs;
+    var res = gImgs.filter(img => img.keywords.includes(gFilterBy))
+    return res;
 }

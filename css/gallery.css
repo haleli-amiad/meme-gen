@@ -1,88 +1,7 @@
-canvas {
-    border: 2px solid rgba(0, 0, 0, 0.646);
-    box-shadow: 0px 0px 5px 0px rgba(130, 130, 130, 0.45);
-    height: 60%;
-    /* grid-column: 3 / span 5;
-    grid-row: 1 / span 5; */
-}
-
-main {
-    margin: 0 auto;
-}
-
-.canvas-container {
-    z-index: -2;
-    margin-top: 4rem;
-    /* margin: 5rem; */
-    padding: 3rem;
-    width: 70%;
-    height: 70vh;
-    display: flex;
-    box-shadow: 0px 0px 5px 0px rgba(114, 113, 113, 0.85);
-    flex-direction: row;
-    justify-content: space-evenly;
-    background-color: rgba(128, 128, 128, 0.221);
-    border-radius: 2rem;
-}
-
-label.choose-color {
-    background-color: #fff;
-    position: relative;
-    grid-column: 4;
-    grid-row: 1;
-}
-
-.choose-color {
-    grid-column: 4;
-    grid-row: 1;
-    background-color: #fff;
-    opacity: 0;
-    /* display: none; */
-    position: absolute;
-}
+/* GENERAL */
 
 img {
     object-fit: cover;
-}
-
-h1.gallery-title {
-    text-shadow: 3px 3px 2px #dcdcdc;
-    text-align: center;
-    color: #292929;
-    padding-inline-start: 2rem;
-    font-size: 3.9rem;
-    text-align: start;
-    font-family: dosis, sans serif;
-    z-index: 2;
-}
-
-.gallery {
-    position: relative;
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: repeat(6, 1fr);
-    gap: 1rem;
-    border: 2px solid rgba(114, 114, 114, 0.563);
-    border-radius: 3rem;
-    max-width: 70vw;
-    flex-wrap: wrap;
-    padding: 2rem;
-    margin-block-end: 8rem;
-}
-
-.preferences {
-    background-color: rgb(216, 216, 216);
-    margin-left: 10px;
-    padding-top: 20px;
-    padding: 20px;
-    height: 100%;
-    display: grid;
-    width: 19rem;
-    grid-template-columns: repeat(8, 1fr);
-    grid-template-rows: repeat(15, 1fr);
-    gap: 13px;
-    border-radius: 10px;
-    box-shadow: 0px 0px 5px 0px rgba(114, 113, 113, 0.85);
 }
 
 button {
@@ -90,171 +9,44 @@ button {
     border: 1px solid gray;
     border-radius: 7px;
     outline: none;
+    cursor: pointer;
     transition: all .6s;
-    box-shadow: 3px 3px 4px 0 rgba(62, 62, 56, 0.214), inset 2px 2px 0 0 rgb(206, 199, 149);
+    box-shadow: 3px 3px 4px 0 rgba(62, 62, 56, 0.214);
 }
 
 button:hover {
-    background-color: rgb(191, 176, 61);
+    background-color: rgb(172, 153, 7);
 }
 
-.color-picker {
-    grid-column: 4;
-    grid-row: 1;
-    margin-right: 3px;
-    border: 1px solid gray;
-    background-color: #fff;
-    border-radius: 7px;
-    outline: none;
-    transition: all .6s;
-    width: 40px;
-    padding: 3px;
-    cursor: pointer;
-    height: 40px;
-    box-shadow: 3px 3px 4px 0 rgba(62, 62, 56, 0.214), inset 2px 2px 0 0 rgb(206, 199, 149);
-}
+/* GALLERY  */
 
-.color-picker:hover {
-    background-color: rgb(191, 176, 61);
-}
-
-.arrows-button {
-    /* background-color: none; */
-    color: none;
-    width: 40px;
-    height: 40px;
-    outline: none;
-}
-
-input {
-    grid-column: 1 / span 4;
-    grid-row: 1;
-    font-family: rubik;
-    font-size: 1.1rem;
-    margin-top: 5px;
-    margin-bottom: 5px;
-}
-
-.text-plus-btn {
-    cursor: pointer;
-    grid-column: 3;
-    grid-row: 2;
-    width: 40px;
-    height: 40px;
-}
-
-.text-minus-btn {
-    cursor: pointer;
-    grid-column: 4;
-    grid-row: 2;
-    width: 40px;
-    height: 40px;
-}
-
-.text-up-btn {
-    cursor: pointer;
-    grid-column: 3;
-    grid-row: 3;
-    width: 40px;
-    height: 40px;
-}
-
-.text-down-btn {
-    cursor: pointer;
-    grid-column: 2;
-    grid-row: 3;
-    width: 40px;
-    height: 40px;
-}
-
-.text-switch-btn {
-    cursor: pointer;
-    grid-column: 2;
-    grid-row: 2;
-    max-width: 36px;
-    height: 40px;
-}
-
-select {
-    font-family: rubik;
-    color: #292929;
-    grid-column: 1 / span 2;
-    grid-row: 4;
-    height: 30px;
-    outline: none;
-}
-
-.text-add-btn {
-    cursor: pointer;
-    grid-column: 1;
-    grid-row: 2;
-    width: 38px;
-    height: 40px;
-}
-
-.text-delete-btn {
-    grid-column: 1;
-    grid-row: 3;
-}
-
-img.download {
-    position: relative;
-    width: 30px;
-    height: 30px;
-    margin: 0;
-}
-
-a.save-btn {
-    background-color: #fff;
-    padding: 0;
-    border: 1px solid gray;
-    border-radius: 7px;
-    outline: none;
-    transition: all .6s;
-    width: 40px;
-    padding: 3px;
-    cursor: pointer;
-    height: 40px;
-    box-shadow: 3px 3px 4px 0 rgba(62, 62, 56, 0.214), inset 2px 2px 0 0 rgb(206, 199, 149);
-    grid-column: 4;
-    grid-row: 3;
-}
-
-.share-btn:hover {
-    background-color: rgb(191, 176, 61);
-}
-
-.share-btn {
-    grid-column: 6;
-    grid-row: 3;
-}
-
-.show {
+.search-meme {
     display: block;
+    margin: 3rem 4rem;
+    padding: 2rem 9rem;
+    border-bottom: 1px solid gray;
 }
 
-.hide {
-    display: none;
+.search-meme h2 {
+    font-family: dosis;
+    color: rgb(75, 75, 75);
+    text-shadow: 2px 2px 2px #b8b8b8;
 }
 
-.facebook-btn {
-    /* grid-column: 7; */
-    grid-row: 3;
+.search-meme input {
+    width: 23rem;
+    margin-inline-start: 1rem;
 }
 
-.facebook-btn:hover {
-    background-color: #7493e1;
-}
-
-.main-canvas-img {
-    background-attachment: fixed;
-    grid-column: 2 / span 6;
-    grid-row: 8 / span 3;
-    /* position: relative; */
+.search-meme .search-btn {
+    margin-left: 0.5rem;
+    padding: 0.2rem 0.5rem;
+    font-family: rubik;
+    text-transform: uppercase;
 }
 
 .gallery-header {
-    margin-inline-start: 5rem;
+    margin-inline-start: 7rem;
 }
 
 .main-gallery-img {
@@ -265,6 +57,8 @@ a.save-btn {
 }
 
 .gallery-img {
+    flex-basis: 32%;
+    min-width: 12rem;
     max-width: 22rem;
     max-height: 11.5rem;
     min-height: 11.4rem;
@@ -279,6 +73,466 @@ a.save-btn {
 
 .gallery-img:hover {
     animation: meme 1s infinite;
+}
+
+h1.gallery-title {
+    text-shadow: 3px 3px 2px #dcdcdc;
+    text-align: center;
+    color: rgb(43, 43, 43);
+    padding-inline-start: 3rem;
+    font-size: 3.9rem;
+    text-align: start;
+    font-family: dosis, sans serif;
+    z-index: 2;
+}
+
+.gallery {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    align-content: space-between;
+    gap: 1rem;
+    border: 2px solid rgba(114, 114, 114, 0.563);
+    border-radius: 3rem;
+    max-width: 70rem;
+    flex-wrap: wrap;
+    padding: 2rem;
+    margin-block-end: 8rem;
+}
+
+/* CANVAS */
+
+canvas {
+    border: 2px solid rgba(0, 0, 0, 0.646);
+    box-shadow: 0px 0px 5px 0px rgba(130, 130, 130, 0.45);
+    max-height: 100%;
+}
+
+.canvas-container {
+    z-index: -2;
+    margin-top: 4rem;
+    padding: 3rem;
+    width: 60%;
+    height: 60vh;
+    display: flex;
+    box-shadow: 0px 0px 5px 0px rgba(114, 113, 113, 0.85);
+    flex-direction: row;
+    justify-content: space-between;
+    background-color: rgba(128, 128, 128, 0.221);
+    border-radius: 2rem;
+}
+
+/* PREFERNCES */
+
+.preferences {
+    cursor: pointer;
+    background-color: rgb(216, 216, 216);
+    box-shadow: 0px 0px 5px 0px rgba(114, 113, 113, 0.85);
+    padding: 1.25rem;
+    height: 100%;
+    display: grid;
+    max-width: 12rem;
+    grid-template-columns: repeat(7, 1fr);
+    grid-template-rows: repeat(10, 1fr);
+    gap: 0.7rem;
+    border-radius: 10px;
+}
+
+.pref-button {
+    width: 2.5rem;
+    height: 2.5rem;
+    outline: none;
+}
+
+input.edit-line {
+    grid-column: 1 / span 4;
+    grid-row: 1;
+    font-family: rubik;
+    font-size: 1.1rem;
+    height: 1.9rem;
+}
+
+.text-up-btn {
+    grid-column: 3;
+    grid-row: 3;
+}
+
+.text-down-btn {
+    grid-column: 2;
+    grid-row: 3;
+}
+
+.text-switch-btn {
+    grid-column: 2;
+    grid-row: 2;
+}
+
+select.select-font {
+    font-family: rubik;
+    color: #292929;
+    grid-column: 1 / span 4;
+    grid-row: 7;
+    height: 30px;
+    outline: none;
+}
+
+.text-add-btn {
+    grid-column: 1;
+    grid-row: 2;
+}
+
+.text-delete-btn {
+    grid-column: 1;
+    grid-row: 3;
+}
+
+img.download {
+    position: relative;
+    width: 30px;
+    height: 30px;
+    margin: 0;
+}
+
+img.download {
+    width: 32px;
+    height: 32px;
+}
+
+.save-btn {
+    background-color: rgb(254, 212, 212);
+    padding: 0;
+    border: 1px solid gray;
+    border-radius: 7px;
+    outline: none;
+    transition: all .6s;
+    padding: 3px;
+    cursor: pointer;
+    box-shadow: 3px 3px 4px 0 rgba(62, 62, 56, 0.214), inset 2px 2px 0 0 rgb(254, 212, 212);
+    grid-column: 3;
+    grid-row: 2;
+}
+
+.edit-text {
+    background-color: rgba(254, 247, 174, 0.493);
+    border-radius: 1rem;
+    box-shadow: 0px 0px 5px 0px rgba(114, 113, 113, 0.85);
+    grid-column: 1 / span 4;
+    grid-row: 8 / span 1;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    height: 7.5rem;
+    padding: 5px 0;
+    width: 9.5rem;
+    justify-content: center;
+    align-content: space-between;
+}
+
+.color-picker {
+    margin-right: 3px;
+    border: 1px solid gray;
+    background-color: #fff;
+    border-radius: 7px;
+    outline: none;
+    transition: all .6s;
+    width: 40px;
+    padding: 3px;
+    cursor: pointer;
+    height: 40px;
+    box-shadow: 3px 3px 4px 0 rgba(62, 62, 56, 0.214), inset 2px 2px 0 0 rgb(206, 199, 149);
+}
+
+.color-picker:hover {
+    background-color: rgb(172, 153, 7);
+}
+
+.choose-color {
+    opacity: 0;
+    background-color: #fff;
+    position: absolute;
+}
+
+.open-stickers-btn {
+    background-color: #ffff;
+    width: 80px;
+    grid-row: 1 / span 2;
+    height: 80px;
+}
+
+button.open-stickers-btn:hover {
+    background-color: rgb(53, 53, 53);
+}
+
+.open-stickers-btn img {
+    width: 50px;
+    height: 50px;
+}
+
+/* STICKERS */
+
+.stickers-section {
+    padding: 5px;
+    max-width: 18rem;
+    background-color: rgb(168, 208, 211);
+    box-shadow: 0px 0px 5px 0px rgba(114, 113, 113, 0.85);
+    border-radius: 2rem;
+    z-index: 10;
+    position: fixed;
+    left: 76rem;
+    top: 16rem;
+    cursor: pointer;
+}
+
+.stickers-title {
+    margin-inline-start: 3rem;
+    font-family: dosis;
+}
+
+.stickers-controller {
+    margin: 0 auto;
+    border-radius: 1rem;
+    width: 87%;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    height: 7rem;
+}
+
+.sticker-img {
+    width: 4rem;
+    height: 80px;
+    object-fit: contain;
+    cursor: pointer;
+}
+
+.stickers- main {
+    margin: 0 auto;
+}
+
+.hide {
+    display: none;
+}
+
+/* mediaqueries , sorry for the desktop first! */
+
+@media (max-width: 1550px) {
+    .stickers-section {
+        position: fixed;
+        left: 75rem;
+        width: 19rem;
+        top: 17rem;
+    }
+}
+
+@media (max-width: 1450px) {
+    .stickers-section {
+        left: 68rem;
+        width: 14rem;
+    }
+}
+
+@media (max-width: 1350px) {
+    img.download {
+        width: 26px;
+        height: 26px;
+    }
+    .stickers-section {
+        left: 57rem;
+        height: 54%;
+    }
+    .stickers-controller {
+        flex-direction: row;
+        flex-wrap: nowrap;
+    }
+    .canvas-container {
+        flex-direction: column;
+        height: 100%;
+        margin: 0 auto;
+        width: 50%;
+    }
+    .color-picker {
+        width: 2rem;
+        height: 2rem;
+    }
+    .pref-button {
+        width: 2rem;
+        height: 2rem;
+        outline: none;
+    }
+    .preferences {
+        cursor: pointer;
+        background-color: rgb(216, 216, 216);
+        box-shadow: 0px 0px 5px 0px rgba(114, 113, 113, 0.85);
+        padding: 1.25rem;
+        display: grid;
+        max-width: 80%;
+        margin: 0 auto;
+        height: 14rem;
+        grid-template-columns: repeat(10, 1fr);
+        grid-template-rows: repeat(7, 1fr);
+        gap: 0.7rem;
+        border-radius: 10px;
+    }
+    .edit-text {
+        background-color: rgba(254, 247, 174, 0.493);
+        border-radius: 1rem;
+        box-shadow: 0px 0px 5px 0px rgba(114, 113, 113, 0.85);
+        grid-column: 5 / span 4;
+        grid-row: 3 / span 2;
+        height: 7rem;
+        padding: 5px 0;
+        width: 7.5rem;
+    }
+    .text-up-btn {
+        grid-column: 3;
+        grid-row: 3;
+    }
+    .text-down-btn {
+        grid-column: 2;
+        grid-row: 3;
+    }
+    .text-switch-btn {
+        grid-column: 2;
+        grid-row: 2;
+    }
+    .search-meme {
+        padding: 2rem 2rem;
+    }
+    .container {
+        max-width: 1000px;
+    }
+}
+
+@media (max-width: 1280px) {
+    .stickers-section {
+        left: 49rem;
+    }
+    .canvas-container {
+        width: 50%;
+    }
+    .container {
+        max-width: 900px;
+    }
+    .search-meme {
+        padding: 1.4rem 0;
+        margin: 2rem 1.3rem;
+    }
+    .gallery-img {
+        flex-basis: 32%;
+        min-width: 5rem;
+        max-width: 12rem;
+        min-height: unset;
+    }
+}
+
+@media (max-width: 1000px) {
+    .stickers-section {
+        left: 38rem;
+        height: 54%;
+    }
+    .canvas-container {
+        width: 70%;
+    }
+    .container {
+        max-width: 750px;
+    }
+    .search-meme {
+        padding-bottom: 1rem;
+        padding-top: 0;
+    }
+    .search-meme input {
+        width: 15rem;
+    }
+    h1.gallery-title {
+        font-size: 2rem;
+    }
+    .search-meme h2 {
+        padding-bottom: 5rem;
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 850px) {
+    .stickers-section {
+        left: 30rem;
+    }
+    .container {
+        max-width: 600px;
+    }
+    .gallery-img {
+        flex-basis: 50%;
+        min-width: 10rem;
+        max-width: 12rem;
+    }
+}
+
+@media (max-width: 750px) {
+    .stickers-section {
+        left: 25rem;
+    }
+    .canvas-container {
+        width: 95%;
+    }
+}
+
+@media (max-width: 750px) {
+    .stickers-section {
+        left: 22rem;
+    }
+    .canvas-container {
+        width: 95%;
+        padding: 5px;
+    }
+    .edit-text {
+        width: 70%;
+    }
+    .search-meme input {
+        width: 10rem;
+    }
+    h1.gallery-title {
+        padding: 0;
+    }
+    .gallery-header {
+        margin: 0 auto;
+    }
+}
+
+@media (max-width: 650px) {
+    .container {
+        max-width: 450px;
+    }
+    .stickers-section {
+        left: 22rem;
+    }
+    .canvas-container {
+        width: 95%;
+        padding: 5px;
+    }
+    .edit-text {
+        width: 70%;
+    }
+    .search-meme input {
+        width: 7rem;
+        padding: 0;
+        margin: 0;
+    }
+    .search-meme h2 {
+        font-size: 0.9rem;
+    }
+    h1.gallery-title {
+        padding: 0;
+    }
+    .gallery-header {
+        margin: 0 auto;
+    }
+}
+
+@media (max-width: 550px) {
+    .stickers-section {
+        left: 15rem;
+    }
 }
 
 @keyframes meme {
