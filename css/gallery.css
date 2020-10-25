@@ -11,7 +11,6 @@ button {
     outline: none;
     cursor: pointer;
     transition: all .6s;
-    box-shadow: 3px 3px 4px 0 rgba(62, 62, 56, 0.214);
 }
 
 button:hover {
@@ -30,7 +29,6 @@ button:hover {
 .search-meme h2 {
     font-family: dosis;
     color: rgb(75, 75, 75);
-    text-shadow: 2px 2px 2px #b8b8b8;
 }
 
 .search-meme input {
@@ -63,12 +61,10 @@ button:hover {
     max-height: 11.5rem;
     min-height: 11.4rem;
     object-fit: cover;
-    border: 1px solid black;
+    border: 1px solid rgb(174, 174, 174);
     border-radius: 0.5rem;
-    box-shadow: -5px 5px 0px 0px rgba(242, 225, 38, 0.454);
     cursor: pointer;
     animation: none;
-    transition: box-shadow .6s;
 }
 
 .gallery-img:hover {
@@ -76,7 +72,6 @@ button:hover {
 }
 
 h1.gallery-title {
-    text-shadow: 3px 3px 2px #dcdcdc;
     text-align: center;
     color: rgb(43, 43, 43);
     padding-inline-start: 3rem;
@@ -94,7 +89,6 @@ h1.gallery-title {
     align-content: space-between;
     gap: 1rem;
     background-color: #f4f4f4;
-    box-shadow: 0px 0px 5px 0px rgba(130, 130, 130, 0.45);
     border-radius: 3rem;
     max-width: 70rem;
     flex-wrap: wrap;
@@ -106,7 +100,6 @@ h1.gallery-title {
 
 canvas {
     border: 2px solid rgba(0, 0, 0, 0.646);
-    box-shadow: 0px 0px 5px 0px rgba(130, 130, 130, 0.45);
     max-height: 100%;
 }
 
@@ -117,10 +110,10 @@ canvas {
     width: 60%;
     height: 60vh;
     display: flex;
-    box-shadow: 0px 0px 5px 0px rgba(114, 113, 113, 0.85);
+    border: 1px solid rgb(213, 213, 213);
     flex-direction: row;
     justify-content: space-around;
-    background-color: rgba(128, 128, 128, 0.221);
+    background-color: rgba(228, 228, 228, 0.221);
     border-radius: 2rem;
 }
 
@@ -128,8 +121,7 @@ canvas {
 
 .preferences {
     cursor: pointer;
-    background-color: rgb(216, 216, 216);
-    box-shadow: 0px 0px 5px 0px rgba(114, 113, 113, 0.85);
+    background-color: rgb(233, 233, 233);
     padding: 1.25rem;
     height: 100%;
     display: grid;
@@ -151,7 +143,6 @@ input.edit-line {
     grid-row: 1;
     font-family: rubik;
     font-size: 0.9rem;
-    color: black !important;
     height: 1.9rem;
 }
 
@@ -202,7 +193,7 @@ img.download {
 }
 
 .save-btn {
-    background-color: rgba(3, 1, 26, 0.555);
+    background-color: rgba(55, 52, 87, 0.555);
     padding: 0;
     border: 1px solid gray;
     border-radius: 7px;
@@ -210,15 +201,13 @@ img.download {
     transition: all .6s;
     padding: 3px;
     cursor: pointer;
-    box-shadow: 3px 3px 4px 0 rgba(62, 62, 56, 0.214);
     grid-column: 3;
     grid-row: 2;
 }
 
 .edit-text {
-    background-color: rgba(3, 1, 26, 0.555);
+    background-color: rgba(55, 52, 87, 0.555);
     border-radius: 1rem;
-    box-shadow: 0px 0px 5px 0px rgba(114, 113, 113, 0.85);
     grid-column: 1 / span 4;
     grid-row: 8 / span 1;
     display: flex;
@@ -233,7 +222,6 @@ img.download {
 }
 
 .color-picker {
-    margin-right: 3px;
     border: 1px solid gray;
     background-color: #fff;
     border-radius: 7px;
@@ -243,7 +231,6 @@ img.download {
     padding: 3px;
     cursor: pointer;
     height: 40px;
-    box-shadow: 3px 3px 4px 0 rgba(62, 62, 56, 0.214);
 }
 
 .color-picker:hover {
@@ -264,7 +251,7 @@ img.download {
 }
 
 button.open-stickers-btn:hover {
-    background-color: rgb(53, 53, 53);
+    background-color: rgba(55, 52, 87, 0.655);
 }
 
 .open-stickers-btn img {
@@ -287,7 +274,6 @@ button.open-stickers-btn:hover {
     padding: 5px;
     max-width: 18rem;
     background-color: rgb(168, 208, 211);
-    box-shadow: 0px 0px 5px 0px rgba(114, 113, 113, 0.85);
     border-radius: 2rem;
     z-index: 10;
     position: fixed;
@@ -382,7 +368,6 @@ button.open-stickers-btn:hover {
     .preferences {
         cursor: pointer;
         background-color: rgb(216, 216, 216);
-        box-shadow: 0px 0px 5px 0px rgba(114, 113, 113, 0.85);
         padding: 1.25rem;
         display: grid;
         max-width: 80%;
@@ -396,7 +381,6 @@ button.open-stickers-btn:hover {
     .edit-text {
         background-color: rgba(3, 1, 26, 0.555);
         border-radius: 1rem;
-        box-shadow: 0px 0px 5px 0px rgba(114, 113, 113, 0.85);
         grid-column: 5 / span 4;
         grid-row: 3 / span 2;
         height: 7rem;
@@ -562,26 +546,5 @@ button.open-stickers-btn:hover {
 @media (max-width: 550px) {
     .stickers-section {
         left: 15rem;
-    }
-}
-
-@keyframes meme {
-    0% {
-        box-shadow: -5px 5px 0px 0px rgba(235, 226, 134, 0.61);
-    }
-    25% {
-        box-shadow: -5px 5px 0px 0px rgb(215, 171, 129);
-    }
-    50% {
-        box-shadow: -5px 5px 0px 0px rgb(228, 168, 168);
-    }
-    75% {
-        box-shadow: -5px 5px 0px 0px rgb(206, 152, 206);
-    }
-    90% {
-        box-shadow: -5px 5px 0px 0px rgb(164, 219, 196);
-    }
-    100% {
-        box-shadow: -5px 5px 0px 0px rgba(139, 221, 139, 0.454);
     }
 }
