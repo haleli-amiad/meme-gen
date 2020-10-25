@@ -199,7 +199,7 @@ main .start-button {
 	padding-top: 3px;
 	text-align: center;
 	font-weight: bolder;
-	border: 1px solid #888888;
+	border: 2px solid #444444;
 	text-transform: uppercase;
 	border-radius: 5px;
 	cursor: pointer;
